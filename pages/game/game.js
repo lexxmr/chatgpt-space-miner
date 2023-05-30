@@ -1,3 +1,5 @@
+const { findPathToNearestOre } = require('./pathfinding');
+
 Page({
   data: {
     map: [],
@@ -31,26 +33,6 @@ Page({
 
     this.setData({ map });
   },
-  
-  findPathToNearestOre: function(miner) {
-    // 在这个函数中，你需要实现寻路算法来找到最近的矿石
-    // 以下是一个简单的例子，只查找相邻的单元格
-    let directions = [
-      { dx: -1, dy: 0 },
-      { dx: 1, dy: 0 },
-      { dx: 0, dy: -1 },
-      { dx: 0, dy: 1 },
-    ];
-    for (let direction of directions) {
-      let x = miner.x + direction.dx;
-      let y = miner.y + direction.dy;
-      if (this.data.map[y] && this.data.map[y][x] && this.data.map[y][x].type) {
-        return { x, y };
-      }
-    }
-    // 如果找不到矿石，就返回null
-    return null;
-  },
 
   mineOre: function(miner, ore) {
     let { map } = this.data;
@@ -64,9 +46,11 @@ Page({
   },
 
   autoMine: function() {
-    for (let miner of this.data.miners) {
-      let ore = this.findPathToNearestOre(miner);
-      if (ore) {
+    const { miners, map } = this.data;
+    for (let miner of miners) {
+      let path = findPathToNearestOre(miner, map);
+      if (path && path.length > 0) {
+        let ore = path[path.length - 1]; // 获取路径数组的最后一个元素作为矿石位置
         this.mineOre(miner, ore);
       }
     }
