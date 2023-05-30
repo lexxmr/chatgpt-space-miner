@@ -1,13 +1,44 @@
-image {
-  width: 100px;
-  height: 100px;
+.game {
+  width: 100%;
+  height: 100%;
 }
 
-text {
-  display: block;
-  margin-bottom: 10px;
+.map {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+  height: 100%;
 }
 
-button {
-  margin-bottom: 20px;
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.cell {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  border: 1px solid #000;
+}
+
+.ore {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.miner {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.auto-mine-button {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
 }

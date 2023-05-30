@@ -1,12 +1,15 @@
-<button bindtap="toggleAutoMine">{{autoMining ? '停止挖矿' : '开始挖矿'}}</button>
-
-<view wx:for="{{miners}}" wx:key="*this">
-  <image src="{{item.imageUrl}}" />
-  <text>数量：{{item.count}}</text>
-  <text>效率：{{item.efficiency}}</text>
-</view>
-
-<view wx:for="{{ores}}" wx:key="*this">
-  <image src="{{item.imageUrl}}" />
-  <text>数量：{{item.count}}</text>
+<view class="game">
+  <view class="map">
+    <block wx:for="{{map}}" wx:key="row-{{index}}">
+      <view class="row">
+        <block wx:for="{{item}}" wx:key="cell-{{index1}}">
+          <view class="cell">
+            <image wx:if="{{item.type}}" src="/images/ores/{{item.type}}Ore.png" class="ore" />
+            <image wx:if="{{item.hasMiner}}" src="{{item.minerImage}}" class="miner" />
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <button bindtap="toggleAutoMine" class="auto-mine-button">{{autoMining ? '停止自动挖矿' : '开始自动挖矿'}}</button>
 </view>
