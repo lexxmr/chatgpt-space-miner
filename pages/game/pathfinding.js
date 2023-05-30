@@ -33,43 +33,54 @@ function getNeighbors(node, map) {
 }
 
 function findPathToNearestOre(miner, map) {
-
   // A* algorithm implementation here...
   let start = new Node(miner.x, miner.y);
   let openList = [start];
   let closedList = [];
   let goal = null;
+  let nearestDistance = Infinity;
 
   while (openList.length > 0) {
+    // Sort the openList to get the node with the smallest f at the front
     openList.sort((a, b) => a.f - b.f);
-    let current = openList.shift();
 
+    let current = openList.shift();
+    closedList.push(current);
+
+    // Check if the current node is an ore node
     if (map[current.y][current.x].type) {
-      goal = current;
-      break;
+      let distance = Math.abs(miner.x - current.x) + Math.abs(miner.y - current.y);
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        goal = current;
+      }
     }
 
+    // Check all neighbors
     let neighbors = getNeighbors(current, map);
     for (let i = 0; i < neighbors.length; i++) {
       let neighbor = neighbors[i];
 
       if (closedList.find(node => node.x === neighbor.x && node.y === neighbor.y)) {
+        // If it's in the closed list, ignore it
         continue;
       }
 
+      // If it's not in the open list...
       if (!openList.find(node => node.x === neighbor.x && node.y === neighbor.y)) {
+        // Compute its scores, set the parent
         neighbor.g = current.g + 1;
-        neighbor.h = Math.abs(miner.x - neighbor.x) + Math.abs(miner.y - neighbor.y);
+        neighbor.h = Math.abs(miner.x - neighbor.x) + Math.abs(miner.y - neighbor.y); // Here we use Manhattan distance for heuristic
         neighbor.f = neighbor.g + neighbor.h;
         neighbor.parent = current;
 
+        // And add it to the open list
         openList.push(neighbor);
       }
     }
-
-    closedList.push(current);
   }
 
+  // Once we've found the goal, we can construct the path
   if (goal) {
     let path = [];
     let node = goal;
@@ -79,7 +90,6 @@ function findPathToNearestOre(miner, map) {
     }
     return path.reverse();
   }
-
   return null;
 }
 
