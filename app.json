@@ -1,0 +1,36 @@
+{
+    "pages": [
+      "pages/index/index",
+      "pages/game/game",
+      "pages/upgrades/upgrades",
+      "pages/achievements/achievements"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+      "color": "#000000",
+      "selectedColor": "#00ff00",
+      "backgroundColor": "#ffffff",
+      "borderStyle": "black",
+      "list": [
+        {
+          "pagePath": "pages/game/game",
+          "text": "游戏"
+        },
+        {
+          "pagePath": "pages/upgrades/upgrades",
+          "text": "升级"
+        },
+        {
+          "pagePath": "pages/achievements/achievements",
+          "text": "成就"
+        }
+      ]
+    }    
+}

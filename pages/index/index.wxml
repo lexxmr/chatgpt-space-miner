@@ -1,0 +1,5 @@
+<view class="container">
+  <text class="title">欢迎来到 Space Miner!</text>
+  <text class="intro">在这个游戏中，你将扮演一名太空矿工，收集珍贵的星际矿石。</text>
+  <button class="start-btn" bindtap="startGame">开始游戏</button>
+</view>

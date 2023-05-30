@@ -1,0 +1,13 @@
+<view class="container">
+  <text class="title">升级</text>
+  <view class="upgrade-item">
+    <text class="upgrade-name">矿工机器人</text>
+    <text class="upgrade-description">每秒自动挖矿</text>
+    <button class="upgrade-btn">购买</button>
+  </view>
+  <view class="upgrade-item">
+    <text class="upgrade-name">矿石扫描仪</text>
+    <text class="upgrade-description">提高挖矿效率</text>
+    <button class="upgrade-btn">购买</button>
+  </view>
+</view>

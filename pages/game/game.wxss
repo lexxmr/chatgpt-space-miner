@@ -1,0 +1,13 @@
+image {
+  width: 100px;
+  height: 100px;
+}
+
+text {
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-bottom: 20px;
+}

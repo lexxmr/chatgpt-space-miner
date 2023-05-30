@@ -1,0 +1,12 @@
+<button bindtap="toggleAutoMine">{{autoMining ? '停止挖矿' : '开始挖矿'}}</button>
+
+<view wx:for="{{miners}}" wx:key="*this">
+  <image src="{{item.imageUrl}}" />
+  <text>数量：{{item.count}}</text>
+  <text>效率：{{item.efficiency}}</text>
+</view>
+
+<view wx:for="{{ores}}" wx:key="*this">
+  <image src="{{item.imageUrl}}" />
+  <text>数量：{{item.count}}</text>
+</view>

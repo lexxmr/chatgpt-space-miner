@@ -1,0 +1,11 @@
+<view class="container">
+  <text class="title">成就</text>
+  <view class="achievement-item">
+    <text class="achievement-name">新手矿工</text>
+    <text class="achievement-description">挖出第一块矿石</text>
+  </view>
+  <view class="achievement-item">
+    <text class="achievement-name">矿石狂人</text>
+    <text class="achievement-description">累计挖出1000块矿石</text>
+  </view>
+</view>
